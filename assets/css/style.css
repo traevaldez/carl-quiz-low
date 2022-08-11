@@ -41,7 +41,7 @@ header {
     width: 500px;
 }
 
-.quiz-container {
+.quizContainer {
     display: grid;
     gap: 10px 10px;
     justify-content: center;

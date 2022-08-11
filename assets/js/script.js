@@ -114,7 +114,7 @@ var answersObj = {
 htmlTimeLeft.textContent = timeLeft;
 
 // view high score
-highScoresBtnEl.addEventListener("click", function(){
+/*highScoresBtnEl.addEventListener("click", function(){
     var highScores = "";
     var quizPlayers = "";
     var substringVal = "";
@@ -132,10 +132,10 @@ highScoresBtnEl.addEventListener("click", function(){
 
     }
     window.alert(highScores);
-});
+});*/
 
 // submit score
-submitScoreEl.addEventListener("click", function(){
+submitBtnEl.addEventListener("click", function(){
     var quizLocalStorage = "quiz";
     var quizPlayerInfo = "";
     var value = [];
@@ -169,7 +169,7 @@ answerABtnEl.addEventListener("mouseover", function(){
     answerResultEl.style.diplay = "none";
 });
 
-answerBtnEl.addEventListener("mouseover", function(){
+answerBBtnEl.addEventListener("mouseover", function(){
     answerResultEl.style.diplay = "none";
 });
 
@@ -181,7 +181,11 @@ answerDBtnEl.addEventListener("mouseover", function(){
     answerResultEl.style.diplay = "none";
 });
 
-submitScoreEl.addEventListener("mouseover", function(){
+submitBtnEl.addEventListener("mouseover", function(){
+    answerABtnEl.style.diplay = "none";
+});
+
+startBtnEl.addEventListener("mouseover", function(){
     startBtnEl.style.display = "none";
     questionsEl.style.display = "none";
     initialsEl.style.display = "none";
@@ -191,6 +195,8 @@ submitScoreEl.addEventListener("mouseover", function(){
     finalAnswer = 0;
     timeCheck = 1;
 
+    console.log(startBtnEl);
+
     var timeInterval = setInterval(function(){
         if (score === 1){
             highScore -= 10;
@@ -199,9 +205,9 @@ submitScoreEl.addEventListener("mouseover", function(){
         score = 0;
 
         if (timeLeft >=1 && finalAnswer !== 1) {
-            questionDisplay.textContent = questionsObj.question[questionNum];
+            questionsEl.textContent = questionsObj.question[questionNum];
             
-            questionDisplay.style.display = "";
+            questionsEl.style.display = "";
             answerABtnEl.style.display = "";
             answerBBtnEl.style.display = "";
             answerCBtnEl.style.display = "";
@@ -213,8 +219,8 @@ submitScoreEl.addEventListener("mouseover", function(){
             answerDBtnEl.textContent = answersObj.answers[answerNum][3];
 
             quizContainer.appendChild(questionsEl);
-            gridContainer.appendChild(answerABtnEl);
-            gridContainer.appendChild(finalScoreEL);
+            quizContainer.appendChild(answerABtnEl);
+            quizContainer.appendChild(finalScoreEL);
             timeLeft -= 1;
             htmlTimeLeft.textContent = timeLeft
         }
