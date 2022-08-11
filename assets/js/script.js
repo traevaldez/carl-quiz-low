@@ -7,3 +7,4 @@
 // 7. When a question is answered incorrectly, time is subtracted from the clock
 // 8. When all questions are answered or the timer reaches 0, the game is over
 // 9. When the game is over, you can save your initials and score
+

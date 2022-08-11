@@ -8,7 +8,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #fff;
 }
-
+/* check high score/timer */
 header {
     display: flex;
     flex-wrap: wrap;
@@ -20,35 +20,65 @@ header {
     
 }
 
-/* quiz box/info/questions  */
-.quiz-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 550px;
-    height: 350px;
+.score-btn {
+    text-decoration: none;
+    font-size: 15px;
+    border: 0;
     background-color: #fff;
-    padding: 30px 30px;
-    margin: auto;
 }
 
-.quiz-info p {
+.score-btn:hover {
+    color: purple;
+}
+
+/* main area/questions */
+#main {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    width: 500px;
+}
+
+.quiz-container {
+    display: grid;
+    gap: 10px 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* questions */
+#questions {
     line-height: 1.3;
     width: 60%;
     margin: 0 auto;
     text-align: center;
-
+    align-self: baseline;
+    
 }
 
-/* start button */
-.start {
+/* final score/initials */
+#final-score, 
+#initials {
+    font-size: 15px;
+}
+
+#initials-text {
+    font-size: 15px;
+    resize: none;
+}
+
+
+/* buttons */
+#start-btn {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: auto;
 }
 
-.start button {
+.btn {
     color: white;
     background-color: purple;
     font-size: 15px;
@@ -58,8 +88,24 @@ header {
 
 }
 
-.start button:hover {
+.btn:hover {
     background-color: plum;
 }
 
+/* answer right/wrong */
+#answer-area {
+    display: grid;
+    gap: 10px 10px;
+    border-top: 5px black;
+}
 
+#answer-result {
+    text-align: left;
+}
+
+/* Media Query for screens smaller than 768px */
+@media screen and (max-width: 768px) {
+    #questions {
+        font-size: 20px;
+    }
+}

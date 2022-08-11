@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QUIZ-ULAAAA!</title>
+    <title>CODE QUIZ</title>
     <link rel="stylesheet" href="/assets/css/style.css" />
 </head>
 
@@ -13,14 +13,14 @@
     
     <header>
         <!-- high scores-->
-        <section class="high-scores">
-            View High Scores
-        </section>
+        <div class="high-scores">
+            <button class="score-btn">View High Scores</button>
+        </div>
 
         <!-- timer-->
         <div class="timer">
             <p id="countdown">
-                Time: 
+                Time Remaining: 
                 <span id="time-left"></span>
             </p>
         </div>
@@ -28,26 +28,32 @@
     </header>
 
     <!-- this is where the quiz will go! -->
-    <section class="quiz-box">
-        <div class="quiz-info">
+    <section id="main">
+        <div class="quiz-container">
             
-            <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+            <p id="questions">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+            
+            <!-- score area -->
+            <p id="final-score"></p>
+            <p id="initials"></p>
+            <textarea id="initials-text"></textarea>
+            <button class="btn" id="submit-btn">Submit</button>
+            
+            <!-- start quiz button-->
+            <button class="btn" id="start-btn">Start Quiz</button>
+
+            <!-- answer buttons-->
+            <button class="btn" id="answer-a">One</button>
+            <button class="btn" id="answer-b">Two</button>
+            <button class="btn" id="answer-c">Three</button>
+            <button class="btn" id="answer-d">Four</button>
         
         </div>
-    </section>
 
-     <!-- start quiz button-->
-     <section class="start">
-        <button>Start Quiz</button>
-    </section>
+        <!-- answers right/wrong -->
+            <div id="answer-area"></div>
+            <p id="answer-result"></p>
 
-    <!-- quiz buttons-->
-    <section class="quiz-buttons">
-        <button class="answer-btn" id="answer-a"></button>
-        <button class="answer-btn" id="answer-b"></button>
-        <button class="answer-btn" id="answer-c"></button>
-        <button class="answer-btn" id="answer-d"></button>
-        <button class="submit-btn" id="submit-btn">Submit</button>
     </section>
 
     <!-- javascript -->
