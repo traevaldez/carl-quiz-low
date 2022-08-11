@@ -35,7 +35,7 @@ var highScoresBtnEl = document.getElementsByClassName("high-scores");
 
 // main/questions area
 var mainEl = document.getElementById("main");
-var questionsEl = document.getElementsById("questions");
+var questionsEl = document.getElementById("questions");
 var answerResultEl = document.getElementById("answer-result");
 var finalScoreEL = document.getElementById("final-score");
 
@@ -55,6 +55,7 @@ answerResultEl.style.display = "none";
 
 // questions
 var questionsObj = {
+    question: {
     // question 1
     0: "Commonly used data types DO NOT include:",
     // question 2
@@ -65,44 +66,47 @@ var questionsObj = {
     3: "A very useful tool to debug arrays is:",
     // question 5
     4: "Strings must be enclosed with:"
+    }
 };
 
 // answers
 var answersObj = {
+    answers: {
     // question 1 answers
-    0: {
+    0 : {
         0: "a. strings",
         1: "b. booleans",
         2: "c. alerts",
         3: "d. numbers"
     },
     // question 2 answers
-    1: {
+    1 : {
         0: "a. quotes",
         1: "b. curly brackets",
         2: "c. square brackets",
         3: "d. forward slash"
     },
     // question 3 answers
-    2: {
+    2 : {
         0: "a. strings",
         1: "b. other arrays",
         2: "c. booleans",
         3: "d. all of the above"
     },
     // question 4 answers
-    3: {
+    3 : {
         0: "a. JavaScript",
         1: "b. 'for' loops",
         2: "c. Terminal/bash",
         3: "d. Console.log"
     },
     // question 5 answers
-    4: {
+    4 : {
         0: "a. commas",
         1: "b. curly brackets",
         2: "c. parenthesis",
         3: "d. quotes"
+    }
     }
 };
 
@@ -110,7 +114,7 @@ var answersObj = {
 htmlTimeLeft.textContent = timeLeft;
 
 // view high score
-viewHighScoreEl.addEventListener("click", function(){
+highScoresBtnEl.addEventListener("click", function(){
     var highScores = "";
     var quizPlayers = "";
     var substringVal = "";
@@ -162,17 +166,58 @@ submitScoreEl.addEventListener("click", function(){
 });
 
 answerABtnEl.addEventListener("mouseover", function(){
-    answerResultEl.style.diplay="none";
+    answerResultEl.style.diplay = "none";
 });
 
 answerBtnEl.addEventListener("mouseover", function(){
-    answerResultEl.style.diplay="none";
+    answerResultEl.style.diplay = "none";
 });
 
 answerCBtnEl.addEventListener("mouseover", function(){
-    answerResultEl.style.diplay="none";
+    answerResultEl.style.diplay = "none";
 });
 
 answerDBtnEl.addEventListener("mouseover", function(){
-    answerResultEl.style.diplay="none";
+    answerResultEl.style.diplay = "none";
 });
+
+submitScoreEl.addEventListener("mouseover", function(){
+    startBtnEl.style.display = "none";
+    questionsEl.style.display = "none";
+    initialsEl.style.display = "none";
+    score = 0;
+    timeLeft = 60;
+    htmlTimeLeft.textContent = timeLeft;
+    finalAnswer = 0;
+    timeCheck = 1;
+
+    var timeInterval = setInterval(function(){
+        if (score === 1){
+            highScore -= 10;
+        }
+
+        score = 0;
+
+        if (timeLeft >=1 && finalAnswer !== 1) {
+            questionDisplay.textContent = questionsObj.question[questionNum];
+            
+            questionDisplay.style.display = "";
+            answerABtnEl.style.display = "";
+            answerBBtnEl.style.display = "";
+            answerCBtnEl.style.display = "";
+            answerDBtnEl.style.display = "";
+
+            answerABtnEl.textContent = answersObj.answers[answerNum][0];
+            answerBBtnEl.textContent = answersObj.answers[answerNum][1];
+            answerCBtnEl.textContent = answersObj.answers[answerNum][2];
+            answerDBtnEl.textContent = answersObj.answers[answerNum][3];
+
+            quizContainer.appendChild(questionsEl);
+            gridContainer.appendChild(answerABtnEl);
+            gridContainer.appendChild(finalScoreEL);
+            timeLeft -= 1;
+            htmlTimeLeft.textContent = timeLeft
+        }
+    })
+});
+
