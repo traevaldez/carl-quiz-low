@@ -40,49 +40,64 @@ var answerResultEl = document.getElementById("answer-result");
 var finalScoreEL = document.getElementById("final-score");
 
 // hide elements
+// answer buttons
 answerABtnEl.style.display = "none";
 answerBBtnEl.style.display = "none";
 answerCBtnEl.style.display = "none";
 answerDBtnEl.style.display = "none";
+// submit buttons
 submitBtnEl.style.display = "none";
+// initial text box
+initialsEl.style.display = "none"
 initialsTextEl.style.display = "none";
-answerResultEl.style.display = "nonw";
+// answer results
+answerResultEl.style.display = "none";
 
 // questions
 var questionsObj = {
+    // question 1
     0: "Commonly used data types DO NOT include:",
+    // question 2
     1: "The condition in an if/else statment is enclosed within ___:. ",
+    // question 3
     2: "Arrays can be used to store the following:",
+    // question 4
     3: "A very useful tool to debug arrays is:",
+    // question 5
     4: "Strings must be enclosed with:"
 };
 
 // answers
 var answersObj = {
+    // question 1 answers
     0: {
         0: "a. strings",
         1: "b. booleans",
         2: "c. alerts",
         3: "d. numbers"
     },
+    // question 2 answers
     1: {
         0: "a. quotes",
         1: "b. curly brackets",
         2: "c. square brackets",
         3: "d. forward slash"
     },
+    // question 3 answers
     2: {
         0: "a. strings",
         1: "b. other arrays",
         2: "c. booleans",
         3: "d. all of the above"
     },
+    // question 4 answers
     3: {
         0: "a. JavaScript",
         1: "b. 'for' loops",
         2: "c. Terminal/bash",
         3: "d. Console.log"
     },
+    // question 5 answers
     4: {
         0: "a. commas",
         1: "b. curly brackets",
@@ -94,4 +109,70 @@ var answersObj = {
 // timer
 htmlTimeLeft.textContent = timeLeft;
 
+// view high score
+viewHighScoreEl.addEventListener("click", function(){
+    var highScores = "";
+    var quizPlayers = "";
+    var substringVal = "";
 
+    for (var i = 0; i < localStorage.length; i++) {
+        var checkPlayerScore = [];
+
+        quizPlayers = localStorage.getItem(localStorage.key(i));
+        substringVal = quizPlayers.substring(0, 4)
+        if (substringTest == "quiz") {
+            checkPlayerVal - quizPlayers.split(", ");
+            var userName = checkPlayerVal;
+            highScores += "User " + userName.substring(4) + " high score is: " + checkPlayerVal[1] + "/n";
+        }
+
+    }
+    window.alert(highScores);
+});
+
+// submit score
+submitScoreEl.addEventListener("click", function(){
+    var quizLocalStorage = "quiz";
+    var quizPlayerInfo = "";
+    var value = [];
+
+    quizUserInfo = quizLocalStorage = initialsTextEl.value
+    value = [quizUserInfo,highScore]
+
+    if (!localStorage.length){
+        localStorage.setItem("test","test");
+    }
+
+    for (var i = 0; i < localStorage.length; i++){
+        var checkPlayer = "";
+        var checkPlayerVal = [];
+
+        quizPlayerInfo = quizLocalStorage + initialsTextEl.value;
+
+        checkPlayer = localStorage.getItem(quizPlayerInfo);
+
+        if (checkPlayer == null) {
+            localStorage.setItem(quizPlayerInfo, value);
+            window.alert("Your score of " + highScore + "has been recoreded!")
+            break;
+        } else if (checkPlayer != null){
+            checkPlayerVal = checkPlayer.split(", ");
+        }
+    }
+});
+
+answerABtnEl.addEventListener("mouseover", function(){
+    answerResultEl.style.diplay="none";
+});
+
+answerBtnEl.addEventListener("mouseover", function(){
+    answerResultEl.style.diplay="none";
+});
+
+answerCBtnEl.addEventListener("mouseover", function(){
+    answerResultEl.style.diplay="none";
+});
+
+answerDBtnEl.addEventListener("mouseover", function(){
+    answerResultEl.style.diplay="none";
+});
